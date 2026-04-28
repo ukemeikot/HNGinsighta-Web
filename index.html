@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insighta Labs+</title>
+  <meta name="description" content="Secure profile intelligence — filter, search, and export demographic data through a web portal or globally installable CLI.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23059669'/><path d='M9 9h14M9 16h10M9 23h7' stroke='white' stroke-width='3' stroke-linecap='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 7h14M5 12h10M5 17h7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Insighta Labs<sup>+</sup></span>
+        <span class="session-meta">
+          <span id="sessionLabel" class="session-label">Signed out</span>
+          <span id="roleBadge" class="badge badge-role" hidden></span>
+        </span>
+      </span>
+    </a>
+    <nav class="nav">
+      <button id="loginBtn" hidden>
+        <svg class="loginbtn-icon-github" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        <svg class="loginbtn-icon-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M5 12l5 5 9-11"/></svg>
+        <span id="loginBtnLabel">Sign in</span>
+      </button>
+      <img id="userAvatar" class="user-avatar" alt="" hidden>
+      <button id="logoutBtn" class="ghost" hidden>Sign out</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="signedOut" class="empty-state" hidden>
+      <div class="hero">
+        <span class="hero-eyebrow">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="5"/></svg>
+          Insighta Labs+ · Stage 3
+        </span>
+        <h2>Profile intelligence,<br><span class="grad">securely accessible.</span></h2>
+        <p class="hero-lede">Filter, search, and export demographic profiles through a secure web portal or a globally installable CLI. GitHub-backed sign-in. Role-based access. Built for analyst and admin workflows.</p>
+        <div class="hero-actions">
+          <button id="heroLoginBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+            Continue with GitHub
+          </button>
+          <span class="hero-meta">No password. OAuth 2.0 + PKCE.</span>
+        </div>
+        <div class="hero-features">
+          <div class="hero-feature">
+            <span class="hero-feature-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+            </span>
+            <div>
+              <h3>Powerful filters</h3>
+              <p>Gender, country, age range, sort, paginate.</p>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <span class="hero-feature-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            </span>
+            <div>
+              <h3>Natural search</h3>
+              <p>"Young males from Nigeria" — just ask.</p>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <span class="hero-feature-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </span>
+            <div>
+              <h3>CSV export</h3>
+              <p>Take filtered slices to your tools.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="appShell" hidden>
+      <nav class="subnav" aria-label="Sections">
+        <button id="dashboardTab" class="tab" hidden>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          Dashboard
+        </button>
+        <button id="profilesTab" class="tab" hidden>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h12"/></svg>
+          Profiles
+        </button>
+        <button id="searchTab" class="tab" hidden>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          Search
+        </button>
+        <button id="accountTab" class="tab" hidden>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+          Account
+        </button>
+      </nav>
+
+      <section id="dashboardView" class="view-panel">
+        <header class="view-header">
+          <h2 class="view-title">Overview</h2>
+          <p class="view-subtitle">A snapshot of your dataset and current session.</p>
+        </header>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <span class="metric-icon metric-icon--brand" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+            </span>
+            <span class="metric-label">Total profiles</span>
+            <strong id="metricProfiles">0</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-icon metric-icon--info" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
+            </span>
+            <span class="metric-label">Current page</span>
+            <strong id="metricPage">1</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-icon metric-icon--accent" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4v6c0 5-4 9-9 10C7 21 3 17 3 12V6l9-4z"/></svg>
+            </span>
+            <span class="metric-label">Your role</span>
+            <strong id="metricRole">analyst</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="profilesView" class="view-panel" hidden>
+        <header class="view-header">
+          <h2 class="view-title">Profiles</h2>
+          <p class="view-subtitle">Filter, search, and export demographic intelligence.</p>
+        </header>
+
+        <div class="toolbar">
+          <div class="search-field">
+            <svg class="search-field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input id="searchInput" placeholder="Try: young males from nigeria" autocomplete="off">
+          </div>
+          <button id="searchBtn">Search</button>
+          <button id="clearBtn" class="ghost">Clear</button>
+          <button id="exportBtn" class="ghost">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Export CSV
+          </button>
+        </div>
+
+        <form id="filters" class="card filters-card">
+          <div class="filters">
+            <label>Gender<input name="gender" placeholder="male"></label>
+            <label>Country<input name="country_id" placeholder="NG" maxlength="2"></label>
+            <label>Age group<input name="age_group" placeholder="adult"></label>
+            <label>Min age<input name="min_age" type="number" min="0"></label>
+            <label>Max age<input name="max_age" type="number" min="0"></label>
+            <label>Sort
+              <select name="sort_by">
+                <option value="created_at">Created</option>
+                <option value="age">Age</option>
+                <option value="gender_probability">Gender probability</option>
+              </select>
+            </label>
+            <label>Order
+              <select name="order">
+                <option value="desc">Desc</option>
+                <option value="asc">Asc</option>
+              </select>
+            </label>
+            <div class="filters-actions">
+              <button>Apply</button>
+            </div>
+          </div>
+        </form>
+
+        <section id="adminPanel" class="card admin-panel" hidden>
+          <div class="admin-panel-header">
+            <span class="admin-tag">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+              Admin
+            </span>
+            <h3>Create a profile</h3>
+          </div>
+          <form id="createForm">
+            <input name="name" placeholder="e.g. Ada Lovelace" required>
+            <button>Create profile</button>
+          </form>
+        </section>
+
+        <div class="status-row">
+          <span id="resultCount" class="result-count">0 profiles</span>
+          <div class="pager">
+            <button id="prevBtn" class="ghost">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              Previous
+            </button>
+            <span id="pageLabel">Page 1</span>
+            <button id="nextBtn" class="ghost">
+              Next
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Profile</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Group</th>
+                <th>Country</th>
+                <th>Confidence</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="profilesBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="accountView" class="view-panel" hidden>
+        <header class="view-header">
+          <h2 class="view-title">Account</h2>
+          <p class="view-subtitle">Your GitHub-linked identity and access role.</p>
+        </header>
+        <div class="card account-card">
+          <dl class="account-list">
+            <dt>Username</dt><dd id="accountUsername"></dd>
+            <dt>Email</dt><dd id="accountEmail"></dd>
+            <dt>Role</dt><dd id="accountRole"></dd>
+          </dl>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="profileDialog">
+    <article class="detail-dialog">
+      <header class="detail-dialog-header">
+        <h2 id="detailName">Profile</h2>
+        <button id="closeDetailBtn" class="ghost icon-only" aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <dl class="account-list" id="detailBody"></dl>
+    </article>
+  </dialog>
+
+  <div id="toast" role="status"></div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
