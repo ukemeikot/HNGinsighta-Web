@@ -362,15 +362,23 @@ async function exportCsv() {
 }
 
 async function api(path, options = {}) {
+  const headers = {
+    ...csrfHeaders(),
+    ...(options.headers || {})
+  };
+
+  if (path.startsWith('/api/profiles') || path.startsWith('/api/v1/profiles')) {
+    headers['X-API-Version'] = '1';
+  }
+
+  if (options.body) {
+    headers['Content-Type'] = 'application/json';
+  }
+
   const response = await fetch(`${backendUrl}${path}`, {
     credentials: 'include',
     ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      'X-API-Version': '1',
-      ...csrfHeaders(),
-      ...(options.headers || {})
-    }
+    headers
   });
 
   if (response.status === 401) {
@@ -418,4 +426,3 @@ function escapeHtml(value) {
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 }
-
